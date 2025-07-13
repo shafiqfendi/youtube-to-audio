@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube to MP3 Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>YouTube to MP3 Converter</h1>
+        <p>Convert your favorite YouTube videos to MP3 files</p>
+        
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+        
+        <form action="/" method="POST" id="converter-form">
+            <input type="url" name="youtube_url" placeholder="Enter YouTube URL" required>
+            <button type="submit" id="convert-btn">Convert</button>
+        </form>
+        
+        <div class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Converting... Please wait</p>
+        </div>
+        
+        <div class="instructions">
+            <h3>How to use:</h3>
+            <ol>
+                <li>Copy the URL of the YouTube video you want to convert</li>
+                <li>Paste it in the field above</li>
+                <li>Click "Convert"</li>
+                <li>The MP3 will automatically download to your device</li>
+            </ol>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
